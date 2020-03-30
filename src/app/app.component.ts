@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'micro-app-a';
+  name: string;
+  @Output() emitEventToContainer: EventEmitter<string> = new EventEmitter();
+
+  getProfile(event) {
+    this.emitEventToContainer.emit(event);
+    console.log(event);
+  }
+
 }
